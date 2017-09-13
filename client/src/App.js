@@ -35,7 +35,7 @@ class App extends Component {
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/movies/:id" component={MoviePage} />
           <Route path="/users/:id" component={UserPage} />
-          <Route path="/users/:id/favorites/1" component={FavoritePage} />
+        <Route path="/users/:id/favorites/:id" component={FavoritePage} />
         </div>
       </Router>
     );
