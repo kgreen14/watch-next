@@ -6,7 +6,12 @@ class Api::UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
-        render json: @user
+        @favorites = @user.favorites.all
+        render json: {
+            user: @user,
+            favorites: @favorites
+        }
+        
     end
 
     def create
