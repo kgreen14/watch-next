@@ -6,6 +6,7 @@ import HomePage from "./components/HomePage";
 import SignUp from "./components/SignUp";
 import MoviePage from "./components/MoviePage";
 import LoginPage from "./components/LoginPage";
+import Search from "./components/Search";
 import './App.css';
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
             <div>
               <Link to="/signup">Sign Up</Link><br />
               <Link to="/login">Login Page</Link><br />
+              <Link to="/search">Search Page</Link><br />
               <Link to="/users/1">Single User</Link><br />
               <Link to="/users/1/favorites/1">Single Favorite</Link><br />
               <Link to="/movies/1">Single Movie</Link><br />
@@ -29,6 +31,7 @@ class App extends Component {
           </div>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/search" component={Search} />
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/movies/:id" component={MoviePage} />
           <Route path="/users/:id" component={UserPage} />
