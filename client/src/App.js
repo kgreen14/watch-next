@@ -1,19 +1,40 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import UserPage from "./components/UserPage";
+import FavoritePage from "./components/FavoritePage";
+import HomePage from "./components/HomePage";
+import SignUp from "./components/SignUp";
+import MoviePage from "./components/MoviePage";
+import LoginPage from "./components/LoginPage";
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+      <Router>
+        <div>
+          <div>
+            <nav>
+              <Link to="/"><h1>I AM THE NAVBAR</h1></Link>
+            </nav>
+            <div>
+              <Link to="/signup">Sign Up</Link><br />
+              <Link to="/login">Login Page</Link><br />
+              <Link to="/users/1">Single User</Link><br />
+              <Link to="/users/1/favorites/1">Single Favorite</Link><br />
+              <Link to="/movies/1">Single Movie</Link><br />
+              
+
+            </div>
+          </div>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/login" component={LoginPage} />
+          <Route exact path="/movies/:id" component={MoviePage} />
+          <Route path="/users/:id" component={UserPage} />
+          <Route path="/users/:id/favorites/1" component={FavoritePage} />
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      </Router>
     );
   }
 }
