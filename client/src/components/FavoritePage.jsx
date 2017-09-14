@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import MovieSearch from './MovieSearch'
 
 class FavoritePage extends Component {
     constructor() {
@@ -42,7 +43,7 @@ class FavoritePage extends Component {
         return (
           <div>
               
-        
+        <MovieSearch id={this.props.match.params.id} />
           {this.state.movies.map(movie => (
             <div key={movie.id}>
               <img src={movie.poster} alt="" />

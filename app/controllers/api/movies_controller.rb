@@ -5,7 +5,8 @@ class Api::MoviesController < ApplicationController
     end
 
     def create
-        @favorite = MovieList.find(params[:favorite_id])
+        @user = User.find params[:id]
+        @favorite = Favorite.find(params[:favorite_id])
         @favorite.movies.create(movie_params)
     end
 

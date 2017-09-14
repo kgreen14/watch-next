@@ -7,6 +7,7 @@ import SignUp from "./components/SignUp";
 import MoviePage from "./components/MoviePage";
 import LoginPage from "./components/LoginPage";
 import Search from "./components/Search";
+import MovieSearch from "./components/MovieSearch";
 import './App.css';
 
 class App extends Component {
@@ -31,11 +32,11 @@ class App extends Component {
           </div>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/search" component={Search} />
+          <Route exact path="/search" component={MovieSearch} />
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/movies/:id" component={MoviePage} />
-          <Route path="/users/:id" component={UserPage} />
-        <Route path="/users/:id/favorites/:id" component={FavoritePage} />
+          <Route exact path="/users/:id" component={UserPage} />
+          <Route exact path="/users/:id/favorites/:id" component={FavoritePage} />
         </div>
       </Router>
     );
