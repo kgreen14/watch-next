@@ -3,4 +3,19 @@ class Api::MoviesController < ApplicationController
         @movie = Movie.find(params[:id])
         render json: @movie
     end
+
+    def create
+        @favorite = MovieList.find(params[:favorite_id])
+        @favorite.movies.create(movie_params)
+    end
+
+    def destroy
+        @movie = Movie.find(params[:id])
+        @movie.destroy
+    end
+
+    private
+    def movie_params
+        params.require(:movie).permit(:genre, :favorite_id, :title, :plot, :poster, :released, :rated)
+    end
 end
