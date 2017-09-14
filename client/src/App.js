@@ -24,7 +24,7 @@ class App extends Component {
               <Link to="/search">Search Page</Link><br />
               <Link to="/users/1">Single User</Link><br />
               <Link to="/users/1/favorites/1">Single Favorite</Link><br />
-              <Link to="/movies/1">Single Movie</Link><br />
+              <Link to="/movies/3">Single Movie</Link><br />
               
 
             </div>
