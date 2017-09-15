@@ -5,7 +5,7 @@ green = User.create({
     f_name: "Kris",
     l_name: "Green",
     email: "Kris@google.com",
-    password: null,
+    password: "merica14",
     photo_url: "https://i.imgur.com/f8gZC1T.png",
 })
 
