@@ -13,13 +13,17 @@ const Button = styled.button`
     background-color: white;
 `;
 
-const MovieCard = styled.button`
-    padding: 2px 16px;background-color: #333333;
+const MovieCard = styled.div`
+    margin: auto;
+    margin-top: 20px;
+    width: 50%;
+    background-color: #333333;
     text-decoration: none;
     color: white;
-    border-radius: 5px;
-    width: 60%;
     margin-bottom: 20px;
+    padding: 2px 16px;background-color: #333333;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 `;
 
 

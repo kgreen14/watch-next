@@ -47,13 +47,16 @@ const SearchHeader = styled.div`
     margin-bottom: 25px;
     text-align: center;
 `
-const MovieCard = styled.button`
-    padding: 2px 16px;background-color: #333333;
-    text-decoration: none;
+const MovieCard = styled.div`
+    margin: auto;
+    margin-top: 20px;
+    width: 50%;
+    background-color: #333333;
     color: white;
-    border-radius: 5px;
     margin-bottom: 20px;
-    width: 60%;
+    padding: 2px 16px;background-color: #333333;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 `;
 
 class MovieSearch extends Component {
