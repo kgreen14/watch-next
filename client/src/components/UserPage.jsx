@@ -47,7 +47,7 @@ class UserPage extends Component {
   render() {
     return (
       <UserCardContent>
-        <img src={this.state.user.photo_url} alt="" />
+        <img src={this.state.user.photo_url} alt="" height="200" width="275"/>
         <h1>{this.state.user.f_name}</h1>
         <h1>{this.state.user.l_name}</h1>
         <h2>{this.state.user.email}</h2>
