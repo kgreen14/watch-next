@@ -8,28 +8,24 @@ import MoviePage from "./components/MoviePage";
 import LoginPage from "./components/LoginPage";
 import Search from "./components/Search";
 import MovieSearch from "./components/MovieSearch";
+import NavBar from './components/NavBar';
+import { injectGlobal } from "styled-components"
 import './App.css';
+
+injectGlobal `
+  body {
+    background-image: url("http://www.joblo.com/posters/images/full/wonder_woman_poster_4.jpg");
+    background-size: 100%;
+    background-attachment: fixed;
+  }
+`
 
 class App extends Component {
   render() {
     return (
       <Router>
-        <div>
-          <div>
-            <nav>
-              <Link to="/"><h1>I AM THE NAVBAR</h1></Link>
-            </nav>
-            <div>
-              <Link to="/signup">Sign Up</Link><br />
-              <Link to="/login">Login Page</Link><br />
-              <Link to="/search">Search Page</Link><br />
-              <Link to="/users/1">Single User</Link><br />
-              <Link to="/users/1/favorites/1">Single Favorite</Link><br />
-              <Link to="/movies/3">Single Movie</Link><br />
-              
-
-            </div>
-          </div>
+        <div className="App">
+          <NavBar />
           <Route exact path="/" component={HomePage} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/search" component={MovieSearch} />

@@ -1,7 +1,26 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import styled from "styled-components";
 
+
+const Button = styled.button`
+    font-size: 1em;
+    margin: 1em;
+    padding: 0.25em 1em;
+    border: 2px solid green;
+    border-radius: 3px;
+    background-color: white;
+`;
+
+const MovieCardContent = styled.div`
+    margin: 0 auto;
+    width: 60%;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+`
 
 // const PageHeader = styled.div`
 //     font-size: 250%;
@@ -21,14 +40,21 @@ import { Link } from 'react-router-dom';
 //         border: none;
 //     }
 // `
-// const MovieTitle = styled.div`
-//     background-color: #404E5C;
-//     color: white;
-//     font-size: 200%;
-//     margin-top: 20px;
-//     margin-bottom: 25px;
-//     text-align: center;
-// `
+const SearchHeader = styled.div`
+    color: white;
+    font-size: 200%;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    text-align: center;
+`
+const MovieCard = styled.button`
+    padding: 2px 16px;background-color: #333333;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    width: 60%;
+`;
 
 class MovieSearch extends Component {
     constructor() {
@@ -101,31 +127,23 @@ class MovieSearch extends Component {
         console.log(this.state.movie)
         return (
             <div>
-                <div className="row justify-content-center">
-                    <h2>Search for Movie</h2>
-                </div>
-
-                <div className="row justify-content-center">
-                    <form>
-                        <div>
-                            <input onChange={this._handleChange} type="text" name="search" value={this.state.search} />
-                            <button onClick={this._searchMovie} className="default-button">Submit</button>
-                        </div>   
-                    </form>
-                </div>
-
-                <h1>Movie Found</h1><button onClick={this._addMovie} className="default-button">Add Movie to Favorites</button>
+                <form>
+                    <div>
+                        <input onChange={this._handleChange} placeholder="search for movie" type="text" name="search" value={this.state.search} />
+                        <Button onClick={this._searchMovie} className="default-button">Submit</Button>
+                    </div>   
+                </form>
 
                 {this.state.movie.Title ? 
-                <div>
+                <MovieCard>
                     <img src={this.state.movie.Poster} alt="" />
                     <h1>{this.state.movie.Title}</h1>
                     <h3>Release Date: {this.state.movie.Released}</h3>
                     <h3>Rated: {this.state.movie.Rated}</h3>
                     <p><strong>Plot:</strong> {this.state.movie.Plot}</p>
-                </div>
-                 : 'No Searched Movie'}
-                
+                    <Button onClick={this._addMovie} className="default-button">Add Movie to Favorites</Button>
+                </MovieCard>
+                 : ''}
                 
       </div>
       
