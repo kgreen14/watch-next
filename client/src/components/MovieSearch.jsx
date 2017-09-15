@@ -71,7 +71,7 @@ class MovieSearch extends Component {
     _searchMovie = async (e) => {
         e.preventDefault();
         const search = this.state.search
-        const url = `http://www.omdbapi.com/?apikey=d5a22275&t=${search}`
+        const url = `https://www.omdbapi.com/?apikey=d5a22275&t=${search}`
         try {
             const res = await axios.get(url, 
               { transformRequest: [(data, headers) => {

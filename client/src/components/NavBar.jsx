@@ -31,7 +31,7 @@ const Site = styled.div`
 `;
 
 const Button = styled.button`
-  background-color: #DB2B39;
+  background-color: #F3CE00;
   font-size: 90%;
   border: 1.5px solid white;
   border-radius: 5px;
@@ -42,7 +42,7 @@ const Button = styled.button`
   color: white;
   :hover {
     background-color: white;
-    color: #DB2B39;
+    color: #F3CE00;
   }
 `
 class NavBar extends Component {
