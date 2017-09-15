@@ -15,6 +15,10 @@ const UserCardContent = styled.div`
     padding: 2px 16px;background-color: #333333;
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    img {
+      height: 200px;
+      width: 275px;
+    }
 `
 
 class UserPage extends Component {
@@ -47,7 +51,7 @@ class UserPage extends Component {
   render() {
     return (
       <UserCardContent>
-        <img src={this.state.user.photo_url} alt="" height="200" width="275"/>
+        <img src={this.state.user.photo_url} alt="" />
         <h1>{this.state.user.f_name}</h1>
         <h1>{this.state.user.l_name}</h1>
         <h2>{this.state.user.email}</h2>
