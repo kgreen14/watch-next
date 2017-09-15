@@ -96,7 +96,7 @@ class NavBar extends Component {
           <Site>Watch Next</Site>
         </Link>
         <div>
-          <Link to="/signup"><Button>Sign Up</Button></Link>
+          <Link to="/users/1"><Button>Sign Up</Button></Link>
           <Link to="/users/1"><Button>Log In</Button></Link>
         </div>
       </Nav>

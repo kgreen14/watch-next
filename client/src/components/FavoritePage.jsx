@@ -28,11 +28,15 @@ const MovieCard = styled.div`
 
 
 const FavoriteTitle = styled.div`
+    margin: auto;
+    width: 25%;
     color: white;
     font-size: 200%;
     margin-top: 20px;
     margin-bottom: 25px;
     text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
 `
 
 const MovieCardContent = styled.div`

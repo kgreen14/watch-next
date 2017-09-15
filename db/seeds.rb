@@ -6,7 +6,7 @@ green = User.create({
     l_name: "Green",
     email: "Kris@google.com",
     password: "merica14",
-    photo_url: "https://i.imgur.com/f8gZC1T.png",
+    photo_url: "https://i.imgur.com/VbeWDYn.jpg",
 })
 
 Favorite.create({
