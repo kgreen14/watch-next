@@ -63,6 +63,7 @@ class MovieSearch extends Component {
     }
     
     _addMovie = () => {
+        console.log('Function hit')
         const id = this.props.id
         const payload ={
             genre: this.state.movie.Genre,
@@ -73,7 +74,8 @@ class MovieSearch extends Component {
             poster: this.state.movie.Poster
         }
         try {
-            const res = axios.post(`/api/favorites/${id}/movies`, payload)
+            const res = axios.post(`/api/users/${id}/movies`, payload)
+            console.log(res)
         } catch (err) {
             console.log(err);
         }
@@ -87,6 +89,15 @@ class MovieSearch extends Component {
 
     render() {
         const id = this.props.id
+        const showMovie = function() {
+            return <div>
+                    <img src={this.state.movie.Poster} alt="" />
+                    <h1>{this.state.movie.Title}</h1>
+                    <h3>Release Date: {this.state.movie.Released}</h3>
+                    <h3>Rated: {this.state.movie.Rated}</h3>
+                    <p><strong>Plot:</strong> {this.state.movie.Plot}</p>
+                </div>
+        }
         console.log(this.state.movie)
         return (
             <div>
@@ -103,8 +114,9 @@ class MovieSearch extends Component {
                     </form>
                 </div>
 
-                <h1>Movie Found</h1><button onClick={() => this._addMovie()} className="default-button">Add Movie to Favorites</button>
+                <h1>Movie Found</h1><button onClick={this._addMovie} className="default-button">Add Movie to Favorites</button>
 
+                {this.state.movie.Title ? 
                 <div>
                     <img src={this.state.movie.Poster} alt="" />
                     <h1>{this.state.movie.Title}</h1>
@@ -112,6 +124,9 @@ class MovieSearch extends Component {
                     <h3>Rated: {this.state.movie.Rated}</h3>
                     <p><strong>Plot:</strong> {this.state.movie.Plot}</p>
                 </div>
+                 : 'No Searched Movie'}
+                
+                
       </div>
       
 

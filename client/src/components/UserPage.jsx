@@ -40,7 +40,7 @@ class UserPage extends Component {
         {this.state.favorites.map(favorite => (
           <div key={favorite.id}>
             <Link to={`/users/${this.state.user.id}/favorites/${favorite.id}`} >{favorite.title}</Link>
-            <MovieSearch id={this.props.match.params.id} />
+            
           </div>
         ))}
       </div>

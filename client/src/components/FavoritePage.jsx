@@ -16,9 +16,10 @@ class FavoritePage extends Component {
     }
 
     _fetchFavoritePage = async () => {
-        const id = this.props.match.params.id
+        const id = this.props.match.params.userId
+        const favoriteId = this.props.match.params.id
         try {
-            const res = await axios.get(`/api/users/${id}/favorites/${id}`);
+            const res = await axios.get(`/api/users/${id}/favorites/${favoriteId}`);
             await this.setState({favorite: res.data.favorite, movies: res.data.movies});
             return res.data;
             console.log(this.state.movies)
@@ -28,12 +29,11 @@ class FavoritePage extends Component {
         }
     }
 
-    _deleteFavoritePage = (e) => {
-        e.preventDefault();
-        const id = this.props.match.params.id
+    _deleteMovie = async (movieID) => {
+        const userId = this.props.match.params.userId
         try {
-            const res = axios.delete(`/api/users/${id}/favorites/${id}`);
-            return res.data;
+            const res = await axios.delete(`/api/users/${userId}/movies/${movieID}`);
+            this.setState({favorite: res.data.favorite, movies: res.data.movies})
         }
         catch (err) {
             console.log(err)
@@ -43,14 +43,16 @@ class FavoritePage extends Component {
         return (
           <div>
               
-        <MovieSearch id={this.props.match.params.id} />
+        <MovieSearch id={this.props.match.params.userId} />
           {this.state.movies.map(movie => (
             <div key={movie.id}>
               <img src={movie.poster} alt="" />
               <h1>{movie.title}</h1>
               <h3>Release Date: {movie.released}</h3>
+              <h3> {movie.id} </h3>
               <h3>Rated: {movie.rated}</h3>
               <p><strong>Plot:</strong> {movie.plot}</p>
+              <button onClick={() => this._deleteMovie(movie.id)} className="default-button">Delete Movie From Favorites</button>
             </div>
             ))}
           </div>

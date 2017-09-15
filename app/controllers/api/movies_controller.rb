@@ -5,18 +5,30 @@ class Api::MoviesController < ApplicationController
     end
 
     def create
-        @user = User.find params[:id]
-        @favorite = Favorite.find(params[:favorite_id])
-        @favorite.movies.create(movie_params)
+        @user = User.find params[:user_id]
+        @favorite = @user.favorites.first
+        @favorite.movies.create!(movie_params)
+        @movies = @favorite.movies
+        render json: {
+            favorite: @favorite,
+            movies: @movies
+        }
     end
 
     def destroy
         @movie = Movie.find(params[:id])
         @movie.destroy
+        @user = User.find params[:user_id]
+        @favorite = @user.favorites.first
+        @movies = @favorite.movies
+         render json:{
+            favorite: @favorite,
+            movies: @movies
+        } 
     end
 
     private
     def movie_params
-        params.require(:movie).permit(:genre, :favorite_id, :title, :plot, :poster, :released, :rated)
+        params.require(:movie).permit(:genre, :title, :plot, :poster, :released, :rated)
     end
 end
