@@ -1,0 +1,99 @@
+exitimport React, { Component } from 'react'; import axios from 'axios'; import { 
+Link } from 'react-router-dom'; \wq \q // const PageHeader = styled.div` // 
+font-size: 250%; // text-align: center; // background-color: #2D2D2A; // color: 
+white; // border-radius: 0px 0px 5px 5px; // margin-bottom: 20px; // ` \wq // 
+const SearchStyle = styled.div` // input { // width: 45vw; // margin: 10px; // 
+border-radius: 2px; // padding: 5px; // border: none; // } // ` // const 
+MovieTitle = styled.div` // background-color: #404E5C; // color: white; // 
+font-size: 200%; // margin-top: 20px; // margin-bottom: 25px; // text-align: 
+center; // ` \qw class MovieSearch extends Component { exit constructor() {
+        super();
+        this.state = {
+            movie: {},
+            search: ''
+        }
+    }
+
+    _searchMovie = async (e) => {
+        e.preventDefault();
+        const search = this.state.search
+        const url = `http://www.omdbapi.com/?apikey=d5a22275&t=${search}`
+        try {
+            const res = await axios.get(url, 
+              { transformRequest: [(data, headers) => {
+                delete headers['access-token']
+                delete headers['uid']
+                delete headers['client']
+                delete headers['expiry']
+                delete headers['token-type']
+                delete headers.common
+                return data;
+              }]
+            });
+            console.log(res.data)
+            await this.setState({movie: res.data})
+        } catch (err) {
+            console.log(err);
+        }
+    }
+    
+    _addMovie = () => {
+        console.log('Function hit')
+        const id = this.props.match.params.userId
+        const payload ={
+            genre: this.state.movie.Genre,
+            plot: this.state.movie.Plot, 
+            released: this.state.movie.Released, 
+            title: this.state.movie.Title, 
+            rated: this.state.movie.Rated, 
+            poster: this.state.movie.Poster
+        }
+        try {
+            const res = axios.post(`/api/users/${id}/movies`, payload)
+            console.log(res)
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    _handleChange = (e) => {
+        const newState = {...this.state}
+        newState[e.target.name] = e.target.value
+        this.setState(newState)
+    }
+
+    render() {
+        const id = this.props.id
+        console.log(this.state.movie)
+        return (
+            <div>
+                <div className="row justify-content-center">
+                    <h2>Search for Movie</h2>
+                </div>
+
+                <div className="row justify-content-center">
+                    <form>
+                        <div>
+                            <input onChange={this._handleChange} type="text" name="search" value={this.state.search} />
+                            <button onClick={this._searchMovie} className="default-button">Submit</button>
+                        </div>   
+                    </form>
+                </div>
+
+                <h1>Movie Found</h1><button onClick={this._addMovie} className="default-button">Add Movie to Favorites</button>
+
+                <div>
+                    <img src={this.state.movie.Poster} alt="" />
+                    <h1>{this.state.movie.Title}</h1>
+                    <h3>Release Date: {this.state.movie.Released}</h3>
+                    <h3>Rated: {this.state.movie.Rated}</h3>
+                    <p><strong>Plot:</strong> {this.state.movie.Plot}</p>
+                </div>
+      </div>
+      
+
+    );
+  }
+}
+
+export default MovieSearch;
